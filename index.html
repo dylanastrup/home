@@ -4,13 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dylan Astrup</title>
-  <meta name="description" content="The simple hub for Dylan Astrup’s sites, apps, and social links." />
+  <meta name="description" content="Official site of Dylan Astrup — engineer, photographer, outrigger paddler. Links to resume, blog, recipes, photos, and contact." />
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta property="og:title" content="Dylan Astrup" />
-  <meta property="og:description" content="One page to find my projects, apps, and profiles." />
+  <meta property="og:description" content="Official site of Dylan Astrup — engineer, photographer, outrigger paddler. Links to resume, blog, recipes, photos, and contact." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/avatar.png" />
+  <meta property="og:image" content="https://dylanastrup.com/avatar.png" />
   <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://dylanastrup.com/" />
 
   <!-- Prevent theme flash -->
   <script>
@@ -113,16 +114,28 @@
     #themeToggle:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(71,116,145,.35); }
     .dark #themeToggle { border-color: rgba(255,255,255,.28); background: rgba(12,12,12,.45); box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 0 0 1px rgba(255,255,255,.03), 0 6px 14px rgba(0,0,0,.35); }
     .dark #themeToggle:hover { border-color: rgba(71,116,145,.65); color: #8db6cc; }
+
+    /* Status badges */
+    .status-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.15rem .5rem;border-radius:9999px;font-size:.72rem;line-height:1;border:1px solid currentColor;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+    .dark .status-badge{background:rgba(12,12,12,.45)}
+    .status-badge .dot{width:.5rem;height:.5rem;border-radius:9999px}
+    .badge-live{color:#065f46}
+    .badge-building{color:#7c2d12}
+    .badge-offline{color:#475569}
+    .dot-live{background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2.2s ease-out infinite}
+    .dot-building{background:#f59e0b;box-shadow:0 0 0 0 rgba(245,158,11,.45);animation:pulse 3s ease-out infinite}
+    .dot-offline{background:#94a3b8}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,0,0,0)}70%{box-shadow:0 0 0 6px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
   </style>
 
   <script>
     // ===== DATA =====
     const TAGLINES = ['Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler','•'];
     const LINKS = [
-      { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text' },
-      { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open' },
-      { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss' },
-      { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera' }
+      { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text', status: 'live' },
+      { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open', status: 'live-beta' },
+      { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss', status: 'live' },
+      { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera', status: 'live' }
     ];
     const SOCIAL = [
       { label: 'Email', href: 'mailto:dylan@dylanastrup.com', icon: 'mail' },
@@ -144,6 +157,28 @@
       rss: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>',
       camera: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
     };
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://dylanastrup.com/#person",
+    "name": "Dylan Astrup",
+    "url": "https://dylanastrup.com/",
+    "image": "https://dylanastrup.com/avatar.png",
+    "email": "mailto:dylan@dylanastrup.com",
+    "sameAs": [
+      "https://x.com/dylanastrup",
+      "https://www.instagram.com/astrup.jpg/",
+      "https://www.linkedin.com/in/dylanastrup/",
+      "https://github.com/dylanastrup",
+      "https://buymeacoffee.com/dylanastrup",
+      "https://resume.dylanastrup.com/",
+      "https://recipes.dylanastrup.com/",
+      "https://blog.dylanastrup.com/",
+      "https://photos.dylanastrup.com/"
+    ]
+  }
   </script>
 </head>
 <body class="font-sans min-h-screen bg-white text-gray-900 dark:bg-neutral-950 dark:text-gray-100 antialiased [color-scheme:light] dark:[color-scheme:dark]">
@@ -187,6 +222,26 @@
       social.appendChild(a);
     });
 
+    // ===== Status badge helper (incl. dual-dot Live Beta) =====
+    function statusBadge(status){
+      const map = {
+        live:      { label: 'Live',            cls: 'badge-live',     dot: 'dot-live' },
+        building:  { label: 'In development',  cls: 'badge-building', dot: 'dot-building' },
+        offline:   { label: 'Offline',         cls: 'badge-offline',  dot: 'dot-offline' }
+      };
+      if (status === 'live-beta' || status === 'live-building') {
+        return `
+          <span class="status-badge badge-live" aria-label="Status: Live (Beta)" title="Live (Beta)">
+            <span class="dot ${map.live.dot}" aria-hidden="true"></span>
+            <span class="dot ${map.building.dot}" aria-hidden="true" style="width:.45rem;height:.45rem;margin-left:-.25rem;border:2px solid rgba(255,255,255,.7);"></span>
+            Live (Beta)
+          </span>
+        `;
+      }
+      const m = map[status] || map.live;
+      return `<span class="status-badge ${m.cls}" aria-label="Status: ${m.label}" title="${m.label}"><span class="dot ${m.dot}" aria-hidden="true"></span>${m.label}</span>`;
+    }
+
     // Build link cards
     const grid = document.getElementById('grid');
     LINKS.forEach(item => {
@@ -194,11 +249,14 @@
       card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
       card.rel = 'noopener';
       card.className = 'group relative rounded-2xl border border-gray-200 dark:border-neutral-800 hover:border-primary/40 dark:hover:border-primary/50 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
+
+      const badge = statusBadge(item.status);
       card.innerHTML = `
         <div class="flex items-start justify-between gap-3">
           <div class="flex items-center gap-2">${ICONS[item.icon] ?? ''}
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">${item.label}</h2>
           </div>
+          <div class="shrink-0">${badge}</div>
         </div>
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
       grid.appendChild(card);
