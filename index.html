@@ -11,58 +11,99 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/avatar.png" />
   <meta name="theme-color" content="#477491" />
-  <script>(function(){try{const ls=localStorage.getItem('theme');const systemDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(ls==='dark'||(!ls&&systemDark))document.documentElement.classList.add('dark');}catch(e){}})();</script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#477491',secondary:'#D28415',surface:'#D2D2D2'},fontFamily:{hand:['Patrick Hand','system-ui','sans-serif']},boxShadow:{soft:'0 4px 24px rgba(0,0,0,0.08)'},borderRadius:{'2xl':'1.25rem'}}}}</script>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-  <style>
-    .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
-    .link-underline:hover{background-size:100% 2px;}
-    .icon{width:1.1rem;height:1.1rem;}
-    .icon-card{width:1.2rem;height:1.2rem;}
-    .marquee{position:relative;overflow:hidden;height:1.5rem;width:clamp(22ch,50vw,34ch);margin:0 auto;text-align:center;
-      mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);
-      -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);}
-    .track{display:inline-block;white-space:nowrap;will-change:transform;}
-    .w{display:inline-block;margin-right:0.6ch;}
-  </style>
-  <script>
-    const HUB={name:'Dylan Astrup',avatar:'avatar.png'};
-    const TAGLINES=['Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler'];
-    const LINKS=[
-      {label:'Resume',href:'http://resume.dylanastrup.com/',desc:'Experience, projects, and contact',icon:'file-text'},
-      {label:'Recipe Book',href:'https://recipes.dylanastrup.com/',desc:'My full‑stack recipe app (React + Flask)',icon:'book-open'},
-      {label:'Blog',href:'https://blog.dylanastrup.com/',desc:'Notes on projects & experiments',icon:'rss'},
-      {label:'Photos',href:'http://photos.dylanastrup.com/',desc:'Photography and galleries',icon:'camera'}
-    ];
-    const SOCIAL=[
-      {label:'Email',href:'mailto:dylan@dylanastrup.com',icon:'mail'},
-      {label:'Twitter/X',href:'https://x.com/dylanastrup',icon:'twitter'},
-      {label:'Instagram',href:'https://www.instagram.com/astrup.jpg/',icon:'instagram'},
-      {label:'LinkedIn',href:'https://www.linkedin.com/in/dylanastrup/',icon:'linkedin'},
-      {label:'GitHub',href:'https://github.com/dylanastrup',icon:'github'},
-      {label:'Buy Me a Coffee',href:'https://buymeacoffee.com/dylanastrup',icon:'coffee'}
-    ];
-    
-const ICONS = {
-  mail: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 5 8-5"/><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/></svg>',
-  twitter: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.633 7.997c.013.18.013.36.013.54 0 5.5-4.19 11.84-11.84 11.84-2.35 0-4.53-.69-6.36-1.87.33.04.65.05.99.05a8.38 8.38 0 0 0 5.2-1.79 4.19 4.19 0 0 1-3.91-2.9c.26.04.52.06.8.06.38 0 .76-.05 1.12-.15a4.18 4.18 0 0 1-3.36-4.1v-.05c.56.31 1.2.5 1.88.52a4.17 4.17 0 0 1-1.86-3.47c0-.77.21-1.48.57-2.1a11.88 11.88 0 0 0 8.62 4.37 4.71 4.71 0 0 1-.1-.96 4.18 4.18 0 0 1 7.24-2.86 8.26 8.26 0 0 0 2.65-1.01 4.2 4.2 0 0 1-1.84 2.3 8.32 8.32 0 0 0 2.4-.65 8.98 8.98 0 0 1-2.1 2.17Z"/></svg>',
-  instagram: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>',
-  linkedin: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554V14.89c0-1.327-.027-3.036-1.85-3.036-1.853 0-2.136 1.445-2.136 2.94v5.658H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433A2.062 2.062 0 1 1 5.34 3.31a2.062 2.062 0 0 1 0 4.123zM6.988 20.452H3.683V9h3.305v11.452z"/></svg>',
-  github: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.15 8.96 7.52 10.41.55.1.75-.24.75-.53v-1.86c-3.06.66-3.7-1.3-3.7-1.3-.5-1.26-1.22-1.6-1.22-1.6-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.9.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.45 0-1.2.43-2.18 1.13-2.96-.11-.28-.49-1.4.11-2.92 0 0 .92-.3 3.01 1.13A10.4 10.4 0 0 1 12 6.8c.93.01 1.86.13 2.73.37 2.09-1.43 3.01-1.13 3.01-1.13.6 1.52.22 2.64.11 2.92.7.78 1.13 1.76 1.13 2.96 0 4.24-2.58 5.16-5.03 5.44.39.33.74.98.74 1.98v2.94c0 .29.19.63.76.52 4.36-1.45 7.5-5.56 7.5-10.4C23.02 5.24 18.27.5 12 .5Z"/></svg>',
-  coffee: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h3a2 2 0 0 1 0 4h-3"/><path d="M2 8h16v5a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6Z"/><path d="M6 2v2"/><path d="M10 2v2"/><path d="M14 2v2"/></svg>',
-  'file-text': '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>',
-  'book-open': '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>',
-  rss: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>',
-  camera: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
-};
 
+  <!-- Prevent theme flash -->
+  <script>
+    (function(){
+      try {
+        const ls = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (ls === 'dark' || (!ls && systemDark)) document.documentElement.classList.add('dark');
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#477491',
+            secondary: '#D28415',
+            surface: '#D2D2D2'
+          },
+          fontFamily: { hand: ['Patrick Hand', 'system-ui', 'sans-serif'] },
+          boxShadow: { soft: '0 4px 24px rgba(0,0,0,0.08)' },
+          borderRadius: { '2xl': '1.25rem' }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    .link-underline { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0% 100%; transition: background-size .2s ease; }
+    .link-underline:hover { background-size: 100% 2px; }
+    .icon { width: 1.1rem; height: 1.1rem; }
+    .icon-card { width: 1.2rem; height: 1.2rem; }
+
+    .marquee {
+      position: relative; overflow: hidden; height: 1.5rem;
+      width: clamp(22ch, 50vw, 34ch); margin: 0 auto; text-align: center;
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+    .track { display: inline-block; white-space: nowrap; will-change: transform; }
+    .w { display: inline-block; margin-right: 0.6ch; }
+  </style>
+
+  <script>
+    // ===== DATA =====
+    const HUB = { name: 'Dylan Astrup', avatar: 'avatar.png' };
+
+    const TAGLINES = [
+      'Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler'
+    ];
+
+    const LINKS = [
+      { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text' },
+      { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open' },
+      { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss' },
+      { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera' }
+    ];
+
+    const SOCIAL = [
+      { label: 'Email', href: 'mailto:dylan@dylanastrup.com', icon: 'mail' },
+      { label: 'Twitter/X', href: 'https://x.com/dylanastrup', icon: 'twitter' },
+      { label: 'Instagram', href: 'https://www.instagram.com/astrup.jpg/', icon: 'instagram' },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dylanastrup/', icon: 'linkedin' },
+      { label: 'GitHub', href: 'https://github.com/dylanastrup', icon: 'github' },
+      { label: 'Buy Me a Coffee', href: 'https://buymeacoffee.com/dylanastrup', icon: 'coffee' }
+    ];
+
+    // ===== ICONS (inline SVG) =====
+    const ICONS = {
+      mail: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 5 8-5"/><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/></svg>',
+      twitter: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.633 7.997c.013.18.013.36.013.54 0 5.5-4.19 11.84-11.84 11.84-2.35 0-4.53-.69-6.36-1.87.33.04.65.05.99.05a8.38 8.38 0 0 0 5.2-1.79 4.19 4.19 0 0 1-3.91-2.9c.26.04.52.06.8.06.38 0 .76-.05 1.12-.15a4.18 4.18 0 0 1-3.36-4.1v-.05c.56.31 1.2.5 1.88.52a4.17 4.17 0 0 1-1.86-3.47c0-.77.21-1.48.57-2.1a11.88 11.88 0 0 0 8.62 4.37 4.71 4.71 0 0 1-.1-.96 4.18 4.18 0 0 1 7.24-2.86 8.26 8.26 0 0 0 2.65-1.01 4.2 4.2 0 0 1-1.84 2.3 8.32 8.32 0 0 0 2.4-.65 8.98 8.98 0 0 1-2.1 2.17Z"/></svg>',
+      instagram: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>',
+      linkedin: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554V14.89c0-1.327-.027-3.036-1.85-3.036-1.853 0-2.136 1.445-2.136 2.94v5.658H9.35V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433A2.062 2.062 0 1 1 5.34 3.31a2.062 2.062 0 0 1 0 4.123zM6.988 20.452H3.683V9h3.305v11.452z"/></svg>',
+      github: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.15 8.96 7.52 10.41.55.1.75-.24.75-.53v-1.86c-3.06.66-3.7-1.3-3.7-1.3-.5-1.26-1.22-1.6-1.22-1.6-.99-.68.08-.66.08-.66 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.57 1.19 3.2.9.1-.71.38-1.19.69-1.47-2.44-.28-5.01-1.22-5.01-5.45 0-1.2.43-2.18 1.13-2.96-.11-.28-.49-1.4.11-2.92 0 0 .92-.3 3.01 1.13A10.4 10.4 0 0 1 12 6.8c.93.01 1.86.13 2.73.37 2.09-1.43 3.01-1.13 3.01-1.13.6 1.52.22 2.64.11 2.92.7.78 1.13 1.76 1.13 2.96 0 4.24-2.58 5.16-5.03 5.44.39.33.74.98.74 1.98v2.94c0 .29.19.63.76.52 4.36-1.45 7.5-5.56 7.5-10.4C23.02 5.24 18.27.5 12 .5Z"/></svg>',
+      coffee: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h3a2 2 0 0 1 0 4h-3"/><path d="M2 8h16v5a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6Z"/><path d="M6 2v2"/><path d="M10 2v2"/><path d="M14 2v2"/></svg>',
+      'file-text': '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>',
+      'book-open': '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>',
+      rss: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>',
+      camera: '<svg class="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h8l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>'
+    };
   </script>
 </head>
 <body class="min-h-screen bg-white text-gray-900 dark:bg-neutral-950 dark:text-gray-100 antialiased [color-scheme:light] dark:[color-scheme:dark]">
   <main class="max-w-5xl mx-auto px-6 py-16">
+    <!-- Header -->
     <header class="flex flex-col items-center text-center gap-5">
-      <img id="avatar" class="h-24 w-24 rounded-full ring-2 ring-primary/20 shadow-soft object-cover" src="avatar.png" alt="Avatar"/>
+      <img id="avatar" class="h-24 w-24 rounded-full ring-2 ring-primary/20 shadow-soft object-cover" src="avatar.png" alt="Avatar" />
       <div>
         <h1 class="text-3xl md:text-4xl font-hand tracking-tight">Dylan Astrup</h1>
         <div class="marquee mt-1 text-gray-600 dark:text-gray-400"><div id="track" class="track"></div></div>
@@ -70,34 +111,110 @@ const ICONS = {
       <nav id="social" class="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300"></nav>
       <button id="themeToggle" class="mt-2 inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-neutral-700 px-3 py-1 text-sm hover:border-primary/50 hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"><span id="themeIcon">🌞</span><span id="themeLabel">Light</span></button>
     </header>
+
+    <!-- Directory grid -->
     <section class="mt-10">
       <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
-    <footer class="mt-12 text-center text-xs text-gray-500 dark:text-gray-400"><p>© <span id="year"></span> Dylan Astrup. All rights reserved.</p></footer>
+
+    <footer class="mt-12 text-center text-xs text-gray-500 dark:text-gray-400">
+      <p>© <span id="year"></span> Dylan Astrup. All rights reserved.</p>
+    </footer>
   </main>
+
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-    // Social with icons
-    const social=document.getElementById('social');
-    SOCIAL.forEach(s=>{const a=document.createElement('a');a.href=s.href;a.className='link-underline hover:text-primary transition inline-flex items-center gap-1.5';a.rel='me noopener';a.target=s.href.startsWith('http')?'_blank':'_self';a.innerHTML=`${ICONS[s.icon]??''}<span>${s.label}</span>`;social.appendChild(a);});
-    // Cards with icons
-    const grid=document.getElementById('grid');
-    LINKS.forEach(item=>{const card=document.createElement('a');card.href=item.href;card.target=item.href.startsWith('http')?'_blank':'_self';card.rel='noopener';card.className='group relative rounded-2xl border border-gray-200 dark:border-neutral-800 hover:border-primary/40 dark:hover:border-primary/50 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';card.innerHTML=`<div class="flex items-start justify-between gap-3"><div class="flex items-center gap-2">${ICONS[item.icon]??''}<h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">${item.label}</h2></div></div><p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${item.desc??''}</p>`;grid.appendChild(card);});
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Build social nav with icons
+    const social = document.getElementById('social');
+    SOCIAL.forEach(s => {
+      const a = document.createElement('a');
+      a.href = s.href; a.rel = 'me noopener'; a.target = s.href.startsWith('http') ? '_blank' : '_self';
+      a.className = 'link-underline hover:text-primary transition inline-flex items-center gap-1.5';
+      a.innerHTML = `${ICONS[s.icon] ?? ''}<span>${s.label}</span>`;
+      social.appendChild(a);
+    });
+
+    // Build link cards
+    const grid = document.getElementById('grid');
+    LINKS.forEach(item => {
+      const card = document.createElement('a');
+      card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
+      card.rel = 'noopener';
+      card.className = 'group relative rounded-2xl border border-gray-200 dark:border-neutral-800 hover:border-primary/40 dark:hover:border-primary/50 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-2">${ICONS[item.icon] ?? ''}
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">${item.label}</h2>
+          </div>
+        </div>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
+      grid.appendChild(card);
+    });
+
     // Theme toggle
-    const toggle=document.getElementById('themeToggle');const icon=document.getElementById('themeIcon');const label=document.getElementById('themeLabel');
-    function applyThemeInfo(){const isDark=document.documentElement.classList.contains('dark');icon.textContent=isDark?'🌙':'🌞';label.textContent=isDark?'Dark':'Light';try{localStorage.setItem('theme',isDark?'dark':'light');}catch(e){}}
-    toggle.addEventListener('click',()=>{document.documentElement.classList.toggle('dark');applyThemeInfo();});applyThemeInfo();
-    // Marquee
-    let rafId=null;
-    function startMarquee(){const track=document.getElementById('track');const marquee=document.querySelector('.marquee');let paused=false;
-      marquee.addEventListener('mouseenter',()=>paused=true);marquee.addEventListener('mouseleave',()=>paused=false);
-      marquee.addEventListener('touchstart',()=>paused=true,{passive:true});marquee.addEventListener('touchend',()=>paused=false,{passive:true});
-      const sequenceHTML=TAGLINES.map(t=>`<span class="w">${t}</span>`).join(' ');
-      track.innerHTML=`<span class="seq">${sequenceHTML}</span><span class="seq">${sequenceHTML}</span>`;
-      let offset=0;const speed=24;const seqEls=track.querySelectorAll('.seq');const halfWidth=seqEls[0].offsetWidth;const container=marquee.offsetWidth;
-      let widthToCenter=0;const tokenEls=seqEls[0].querySelectorAll('.w');for(let i=0;i<5&&i<tokenEls.length;i++){widthToCenter+=tokenEls[i].offsetWidth;}const centerOfGroup=widthToCenter/2;offset=(container/2)-centerOfGroup;let last=performance.now();
-      function frame(now){rafId=requestAnimationFrame(frame);const dt=(now-last)/1000;last=now;if(!paused){offset-=speed*dt;if(offset<=-halfWidth)offset+=halfWidth;track.style.transform=`translateX(${offset}px)`;}}if(rafId)cancelAnimationFrame(rafId);rafId=requestAnimationFrame(frame);}
-    window.addEventListener('load',startMarquee);window.addEventListener('resize',()=>{if(rafId)cancelAnimationFrame(rafId);document.getElementById('track').style.transform='translateX(0)';startMarquee();});
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+    function applyThemeInfo(){
+      const isDark = document.documentElement.classList.contains('dark');
+      icon.textContent = isDark ? '🌙' : '🌞';
+      label.textContent = isDark ? 'Dark' : 'Light';
+      try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
+    }
+    toggle.addEventListener('click', () => { document.documentElement.classList.toggle('dark'); applyThemeInfo(); });
+    applyThemeInfo();
+
+    // ===== Marquee (centered + hover/tap pause) =====
+    let rafId = null;
+    function startMarquee(){
+      const track = document.getElementById('track');
+      const marquee = document.querySelector('.marquee');
+
+      // Pause on hover/tap
+      let paused = false;
+      marquee.addEventListener('mouseenter', () => paused = true);
+      marquee.addEventListener('mouseleave', () => paused = false);
+      marquee.addEventListener('touchstart', () => paused = true, { passive: true });
+      marquee.addEventListener('touchend', () => paused = false, { passive: true });
+      marquee.addEventListener('touchcancel', () => paused = false, { passive: true });
+
+      // Render one sequence and duplicate
+      const sequenceHTML = TAGLINES.map(t => `<span class="w">${t}</span>`).join(' ');
+      track.innerHTML = `<span class="seq">${sequenceHTML}</span><span class="seq">${sequenceHTML}</span>`;
+
+      let offset = 0; const speed = 24; // px/sec
+      const seqEls = track.querySelectorAll('.seq');
+      const halfWidth = seqEls[0].offsetWidth; // one sequence width
+      const container = marquee.offsetWidth;
+
+      // Center the first five tokens (word • word • word)
+      const tokenEls = seqEls[0].querySelectorAll('.w');
+      let widthToCenter = 0;
+      for (let i = 0; i < 5 && i < tokenEls.length; i++) widthToCenter += tokenEls[i].offsetWidth;
+      const centerOfGroup = widthToCenter / 2;
+      offset = (container / 2) - centerOfGroup; // initial centered start
+
+      let last = performance.now();
+      function frame(now){
+        rafId = requestAnimationFrame(frame);
+        const dt = (now - last) / 1000; last = now;
+        if (!paused) {
+          offset -= speed * dt;
+          if (offset <= -halfWidth) offset += halfWidth; // seamless wrap
+          track.style.transform = `translateX(${offset}px)`;
+        }
+      }
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(frame);
+    }
+
+    window.addEventListener('load', startMarquee);
+    window.addEventListener('resize', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      document.getElementById('track').style.transform = 'translateX(0)';
+      startMarquee();
+    });
   </script>
 </body>
 </html>
