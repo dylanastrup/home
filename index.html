@@ -30,13 +30,13 @@
       darkMode: 'class',
       theme: { extend: {
         colors: { primary: '#477491', secondary: '#D28415', surface: '#D2D2D2' },
-        fontFamily: { sans: ['Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans','Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','sans-serif'] },
+        fontFamily: { sans: ['Plus Jakarta Sans','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans','Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','sans-serif'] },
         boxShadow: { soft: '0 4px 24px rgba(0,0,0,0.08)' },
         borderRadius: { '2xl': '1.25rem' }
       } }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root { --bg1:#477491; --bg2:#5da6c7; --bg3:#3b82f6; --bg4:#22c55e; }
@@ -47,7 +47,7 @@
     .icon{width:1.1rem;height:1.1rem;}
     .icon-card{width:1.2rem;height:1.2rem;}
 
-    /* Animated gradient background (stable) */
+    /* Animated gradient background */
     .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;
       background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
       background-size: 300% 300%; opacity: .22; animation: bgMove 22s ease-in-out infinite; }
@@ -57,7 +57,7 @@
     .dark .bg-anim::after { background: radial-gradient(1200px 800px at 70% 20%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.36) 70%, rgba(0,0,0,.44) 100%); }
     @keyframes bgMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    /* Single flowing wave band */
+    /* Single flowing wave band (subtle) */
     .bg-wave { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
     .bg-wave .band {
       position: absolute; left: -20%; width: 140%; height: 24vh; top: 58vh;
@@ -75,7 +75,7 @@
                            50% { transform: translateX(-6%) translateY(1vh) skewX(-4deg); }
                            100% { transform: translateX(0) translateY(0) skewX(4deg); } }
 
-    /* Organic blobs (stable) with subtle wave bands via pseudo-elements */
+    /* Organic blobs (hidden & flowy) */
     .bg-blobs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
     .bg-blobs .blob{ position:absolute; left:var(--x); top:var(--y); width:var(--size); height:var(--size);
       transform:translate(-50%,-50%) rotate(var(--rot)); filter:blur(28px);
@@ -95,11 +95,10 @@
       75%  { transform: translate(-50%,-50%) rotate(calc(var(--rot) + 2deg)) translate(calc(var(--dx)*0.45), calc(var(--dy)*0.25)); }
       100% { transform: translate(-50%,-50%) rotate(var(--rot)) translate(0,0); }
     }
-                       to   { transform: translate(-50%, -50%) rotate(calc(var(--rot) + 8deg)) translate(calc(var(--dx) * -1), calc(var(--dy) * -1)); } }
-    @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
     @keyframes waveX { 0% { transform: translateX(0); } 50% { transform: translateX(-6%); } 100% { transform: translateX(0); } }
 
-    @media (prefers-reduced-motion: reduce) { .bg-anim, .bg-blobs .blob, .bg-blobs::before, .bg-blobs::after { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .bg-anim, .bg-wave .band, .bg-blobs .blob, .bg-blobs::before, .bg-blobs::after { animation: none !important; } }
 
     /* Tagline marquee */
     .marquee { position: relative; overflow: hidden; height: 1.5rem; width: clamp(22ch, 50vw, 34ch); margin: 0 auto; text-align: center;
@@ -108,9 +107,12 @@
     .track { display: inline-block; white-space: nowrap; will-change: transform; }
     .w { display: inline-block; margin-right: 0.6ch; }
 
-    /* Fun cursor on interactive elements (sparkle) */
-    a:hover, button:hover { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23000" d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>') 12 12, pointer; }
-    .dark a:hover, .dark button:hover { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23fff" d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>') 12 12, pointer; }
+    /* Theme toggle — stronger contrast */
+    #themeToggle { border-width: 1.5px; border-color: rgba(0,0,0,.22); background: rgba(255,255,255,.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 0 0 1px rgba(0,0,0,.02), 0 4px 12px rgba(0,0,0,.06); }
+    #themeToggle:hover { border-color: rgba(71,116,145,.6); color: #477491; }
+    #themeToggle:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(71,116,145,.35); }
+    .dark #themeToggle { border-color: rgba(255,255,255,.28); background: rgba(12,12,12,.45); box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 0 0 1px rgba(255,255,255,.03), 0 6px 14px rgba(0,0,0,.35); }
+    .dark #themeToggle:hover { border-color: rgba(71,116,145,.65); color: #8db6cc; }
   </style>
 
   <script>
@@ -225,7 +227,7 @@
     updateLocalTime();
     setInterval(updateLocalTime, 1000);
 
-    // ==== Organic blobs builder (stable) ====
+    // ==== Organic blobs builder (hidden & flowy) ====
     function buildBlobs(){
       const host = document.getElementById('bg-blobs');
       if (!host) return;
