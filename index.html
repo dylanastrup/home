@@ -10,7 +10,7 @@
   <meta property="og:description" content="One page to find my projects, apps, and profiles." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/avatar.png" />
-  <meta name="theme-color" content="#477491" />
+  <meta name="theme-color" content="#0f172a" />
 
   <!-- Prevent theme flash -->
   <script>
@@ -28,53 +28,100 @@
   <script>
     tailwind.config = {
       darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#477491',
-            secondary: '#D28415',
-            surface: '#D2D2D2'
-          },
-          fontFamily: { hand: ['Patrick Hand', 'system-ui', 'sans-serif'] },
-          boxShadow: { soft: '0 4px 24px rgba(0,0,0,0.08)' },
-          borderRadius: { '2xl': '1.25rem' }
-        }
-      }
+      theme: { extend: {
+        colors: { primary: '#477491', secondary: '#D28415', surface: '#D2D2D2' },
+        fontFamily: { hand: ['Patrick Hand', 'system-ui', 'sans-serif'] },
+        boxShadow: { soft: '0 4px 24px rgba(0,0,0,0.08)' },
+        borderRadius: { '2xl': '1.25rem' }
+      } }
     }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
   <style>
-    .link-underline { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 2px; background-repeat: no-repeat; background-position: 0% 100%; transition: background-size .2s ease; }
-    .link-underline:hover { background-size: 100% 2px; }
-    .icon { width: 1.1rem; height: 1.1rem; }
-    .icon-card { width: 1.2rem; height: 1.2rem; }
+    :root { --bg1:#477491; --bg2:#5da6c7; --bg3:#3b82f6; --bg4:#22c55e; }
+    .dark { --bg1:#0b1a2a; --bg2:#0f172a; --bg3:#0b3a5b; --bg4:#0f766e; }
 
-    .marquee {
-      position: relative; overflow: hidden; height: 1.5rem;
-      width: clamp(22ch, 50vw, 34ch); margin: 0 auto; text-align: center;
-      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
+    .link-underline:hover{background-size:100% 2px;}
+    .icon{width:1.1rem;height:1.1rem;}
+    .icon-card{width:1.2rem;height:1.2rem;}
+
+    /* Animated gradient background (stable) */
+    .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;
+      background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
+      background-size: 300% 300%; opacity: .22; animation: bgMove 22s ease-in-out infinite; }
+    .bg-anim::after { content:""; position:absolute; inset:0; pointer-events:none;
+      background: radial-gradient(1200px 800px at 70% 20%, transparent 0%, rgba(0,0,0,.12) 60%, rgba(0,0,0,.2) 100%); }
+    .dark .bg-anim { opacity:.28; }
+    .dark .bg-anim::after { background: radial-gradient(1200px 800px at 70% 20%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.36) 70%, rgba(0,0,0,.44) 100%); }
+    @keyframes bgMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+    /* Single flowing wave band */
+    .bg-wave { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+    .bg-wave .band {
+      position: absolute; left: -20%; width: 140%; height: 24vh; top: 58vh;
+      background: linear-gradient(90deg, hsla(205,70%,65%,.20), hsla(160,70%,55%,.12), hsla(215,70%,55%,.16));
+      filter: blur(34px); opacity: .10;
+      border-radius: 42% 58% 50% 50% / 58% 42% 50% 50%;
+      transform: translate3d(0,0,0) skewX(4deg);
+      animation: waveDrift 34s ease-in-out infinite;
     }
+    .dark .bg-wave .band {
+      opacity: .16;
+      background: linear-gradient(90deg, hsla(200,80%,55%,.16), hsla(170,70%,50%,.10), hsla(220,70%,55%,.16));
+    }
+    @keyframes waveDrift { 0% { transform: translateX(0) translateY(0) skewX(4deg); }
+                           50% { transform: translateX(-6%) translateY(1vh) skewX(-4deg); }
+                           100% { transform: translateX(0) translateY(0) skewX(4deg); } }
+
+    /* Organic blobs (stable) with subtle wave bands via pseudo-elements */
+    .bg-blobs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+    .bg-blobs .blob{ position:absolute; left:var(--x); top:var(--y); width:var(--size); height:var(--size);
+      transform:translate(-50%,-50%) rotate(var(--rot)); filter:blur(28px);
+      background: radial-gradient(35% 35% at 30% 30%, hsla(var(--h),85%,70%,.40), hsla(calc(var(--h) + 20),85%,55%,.28) 60%, transparent 85%);
+      clip-path:polygon(var(--poly)); opacity:var(--op,.22); mix-blend-mode:soft-light;
+      animation: drift var(--dur) cubic-bezier(.42,0,.58,1) infinite, spin calc(var(--spin)) linear infinite; }
+    .dark .bg-blobs .blob { opacity: var(--op, .28); filter: blur(32px); mix-blend-mode: screen; }
+
+    .bg-blobs::before, .bg-blobs::after { content:""; position:absolute; left:-15%; width:130%; height:28vh; pointer-events:none; filter: blur(16px); opacity:.16; }
+    .bg-blobs::before { top:-8vh; background: linear-gradient(180deg, hsla(205,70%,65%,.28), transparent 70%); border-bottom-left-radius:45% 60%; border-bottom-right-radius:55% 60%; animation: waveX 22s ease-in-out infinite; }
+    .bg-blobs::after  { bottom:-10vh; background: linear-gradient(0deg, hsla(160,70%,55%,.28), transparent 70%); border-top-left-radius:60% 55%; border-top-right-radius:40% 55%; animation: waveX 28s ease-in-out infinite reverse; }
+
+    @keyframes drift{
+      0%   { transform: translate(-50%,-50%) rotate(var(--rot)) translate(0,0); }
+      25%  { transform: translate(-50%,-50%) rotate(calc(var(--rot) + 2deg)) translate(calc(var(--dx)*0.45), calc(var(--dy)*0.25)); }
+      50%  { transform: translate(-50%,-50%) rotate(calc(var(--rot) + 4deg)) translate(calc(var(--dx)*0.90), calc(var(--dy)*0.55)); }
+      75%  { transform: translate(-50%,-50%) rotate(calc(var(--rot) + 2deg)) translate(calc(var(--dx)*0.45), calc(var(--dy)*0.25)); }
+      100% { transform: translate(-50%,-50%) rotate(var(--rot)) translate(0,0); }
+    }
+                       to   { transform: translate(-50%, -50%) rotate(calc(var(--rot) + 8deg)) translate(calc(var(--dx) * -1), calc(var(--dy) * -1)); } }
+    @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+    @keyframes waveX { 0% { transform: translateX(0); } 50% { transform: translateX(-6%); } 100% { transform: translateX(0); } }
+
+    @media (prefers-reduced-motion: reduce) { .bg-anim, .bg-blobs .blob, .bg-blobs::before, .bg-blobs::after { animation: none !important; } }
+
+    /* Tagline marquee */
+    .marquee { position: relative; overflow: hidden; height: 1.5rem; width: clamp(22ch, 50vw, 34ch); margin: 0 auto; text-align: center;
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%); }
     .track { display: inline-block; white-space: nowrap; will-change: transform; }
     .w { display: inline-block; margin-right: 0.6ch; }
+
+    /* Fun cursor on interactive elements (sparkle) */
+    a:hover, button:hover { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23000" d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>') 12 12, pointer; }
+    .dark a:hover, .dark button:hover { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23fff" d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>') 12 12, pointer; }
   </style>
 
   <script>
     // ===== DATA =====
-    const HUB = { name: 'Dylan Astrup', avatar: 'avatar.png' };
-
-    const TAGLINES = [
-      'Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler'
-    ];
-
+    const TAGLINES = ['Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler'];
     const LINKS = [
       { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text' },
       { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open' },
       { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss' },
       { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera' }
     ];
-
     const SOCIAL = [
       { label: 'Email', href: 'mailto:dylan@dylanastrup.com', icon: 'mail' },
       { label: 'Twitter/X', href: 'https://x.com/dylanastrup', icon: 'twitter' },
@@ -83,8 +130,6 @@
       { label: 'GitHub', href: 'https://github.com/dylanastrup', icon: 'github' },
       { label: 'Buy Me a Coffee', href: 'https://buymeacoffee.com/dylanastrup', icon: 'coffee' }
     ];
-
-    // ===== ICONS (inline SVG) =====
     const ICONS = {
       mail: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8l8 5 8-5"/><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/></svg>',
       twitter: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.633 7.997c.013.18.013.36.013.54 0 5.5-4.19 11.84-11.84 11.84-2.35 0-4.53-.69-6.36-1.87.33.04.65.05.99.05a8.38 8.38 0 0 0 5.2-1.79 4.19 4.19 0 0 1-3.91-2.9c.26.04.52.06.8.06.38 0 .76-.05 1.12-.15a4.18 4.18 0 0 1-3.36-4.1v-.05c.56.31 1.2.5 1.88.52a4.17 4.17 0 0 1-1.86-3.47c0-.77.21-1.48.57-2.1a11.88 11.88 0 0 0 8.62 4.37 4.71 4.71 0 0 1-.1-.96 4.18 4.18 0 0 1 7.24-2.86 8.26 8.26 0 0 0 2.65-1.01 4.2 4.2 0 0 1-1.84 2.3 8.32 8.32 0 0 0 2.4-.65 8.98 8.98 0 0 1-2.1 2.17Z"/></svg>',
@@ -100,13 +145,17 @@
   </script>
 </head>
 <body class="min-h-screen bg-white text-gray-900 dark:bg-neutral-950 dark:text-gray-100 antialiased [color-scheme:light] dark:[color-scheme:dark]">
-  <main class="max-w-5xl mx-auto px-6 py-16">
+  <div class="bg-anim"></div>
+  <div class="bg-wave"><div class="band"></div></div>
+  <div id="bg-blobs" class="bg-blobs"></div>
+  <main class="max-w-5xl mx-auto px-6 py-16 relative">
     <!-- Header -->
     <header class="flex flex-col items-center text-center gap-5">
-      <img id="avatar" class="h-24 w-24 rounded-full ring-2 ring-primary/20 shadow-soft object-cover" src="avatar.png" alt="Avatar" />
+      <img class="h-24 w-24 rounded-full ring-2 ring-primary/20 shadow-soft object-cover" src="avatar.png" alt="Avatar" />
       <div>
         <h1 class="text-3xl md:text-4xl font-hand tracking-tight">Dylan Astrup</h1>
         <div class="marquee mt-1 text-gray-600 dark:text-gray-400"><div id="track" class="track"></div></div>
+        <div id="localtime" class="mt-2 text-sm text-gray-700 dark:text-gray-300"></div>
       </div>
       <nav id="social" class="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300"></nav>
       <button id="themeToggle" class="mt-2 inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-neutral-700 px-3 py-1 text-sm hover:border-primary/50 hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"><span id="themeIcon">🌞</span><span id="themeLabel">Light</span></button>
@@ -123,9 +172,10 @@
   </main>
 
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Build social nav with icons
+    // Build social nav
     const social = document.getElementById('social');
     SOCIAL.forEach(s => {
       const a = document.createElement('a');
@@ -165,35 +215,85 @@
     toggle.addEventListener('click', () => { document.documentElement.classList.toggle('dark'); applyThemeInfo(); });
     applyThemeInfo();
 
-    // ===== Marquee (centered + hover/tap pause) =====
+    // Local time in Ventura, CA
+    const timeEl = document.getElementById('localtime');
+    function updateLocalTime(){
+      const now = new Date();
+      const fmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', minute: '2-digit' });
+      timeEl.textContent = `Ventura, CA — ${fmt.format(now)}`;
+    }
+    updateLocalTime();
+    setInterval(updateLocalTime, 1000);
+
+    // ==== Organic blobs builder (stable) ====
+    function buildBlobs(){
+      const host = document.getElementById('bg-blobs');
+      if (!host) return;
+      host.innerHTML = '';
+      const count = 12;
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement('span');
+        el.className = 'blob';
+        const size = Math.round(220 + Math.random()*260);
+        const dur = Math.round(28 + Math.random()*18) + 's';
+        const spin = Math.round(80 + Math.random()*60) + 's';
+        const dx = (Math.random()*200 - 100) + 'px';
+        const dy = (Math.random()*200 - 100) + 'px';
+        const x = Math.round(Math.random()*100) + '%';
+        const y = Math.round(Math.random()*100) + '%';
+        const op = (0.18 + Math.random()*0.10).toFixed(2);
+        const rot = Math.round(Math.random()*360) + 'deg';
+        const hueBase = Math.random() < 0.5 ? 200 : 165;
+        const h = Math.round(hueBase + Math.random()*25);
+        const points = 10 + Math.floor(Math.random()*4);
+        const poly = [];
+        for (let p=0; p<points; p++){
+          const ang = (p/points) * Math.PI*2;
+          const r = 42 + Math.random()*18;
+          const px = 50 + Math.cos(ang) * r;
+          const py = 50 + Math.sin(ang) * (r * (0.9 + Math.random()*0.2));
+          poly.push(`${px.toFixed(2)}% ${py.toFixed(2)}%`);
+        }
+        el.style.setProperty('--size', size+'px');
+        el.style.setProperty('--dur', dur);
+        el.style.setProperty('--spin', spin);
+        el.style.setProperty('--dx', dx);
+        el.style.setProperty('--dy', dy);
+        el.style.setProperty('--x', x);
+        el.style.setProperty('--y', y);
+        el.style.setProperty('--op', op);
+        el.style.setProperty('--rot', rot);
+        el.style.setProperty('--h', h);
+        el.style.setProperty('--poly', poly.join(', '));
+        host.appendChild(el);
+      }
+    }
+
+    // ===== Ticker (centered + hover/tap pause) =====
     let rafId = null;
     function startMarquee(){
       const track = document.getElementById('track');
       const marquee = document.querySelector('.marquee');
 
-      // Pause on hover/tap
       let paused = false;
       marquee.addEventListener('mouseenter', () => paused = true);
       marquee.addEventListener('mouseleave', () => paused = false);
       marquee.addEventListener('touchstart', () => paused = true, { passive: true });
       marquee.addEventListener('touchend', () => paused = false, { passive: true });
-      marquee.addEventListener('touchcancel', () => paused = false, { passive: true });
 
-      // Render one sequence and duplicate
       const sequenceHTML = TAGLINES.map(t => `<span class="w">${t}</span>`).join(' ');
       track.innerHTML = `<span class="seq">${sequenceHTML}</span><span class="seq">${sequenceHTML}</span>`;
 
-      let offset = 0; const speed = 24; // px/sec
+      let offset = 0; const speed = 24;
       const seqEls = track.querySelectorAll('.seq');
-      const halfWidth = seqEls[0].offsetWidth; // one sequence width
+      const halfWidth = seqEls[0].offsetWidth;
       const container = marquee.offsetWidth;
 
-      // Center the first five tokens (word • word • word)
       const tokenEls = seqEls[0].querySelectorAll('.w');
       let widthToCenter = 0;
       for (let i = 0; i < 5 && i < tokenEls.length; i++) widthToCenter += tokenEls[i].offsetWidth;
       const centerOfGroup = widthToCenter / 2;
-      offset = (container / 2) - centerOfGroup; // initial centered start
+      offset = (container / 2) - centerOfGroup;
 
       let last = performance.now();
       function frame(now){
@@ -201,7 +301,7 @@
         const dt = (now - last) / 1000; last = now;
         if (!paused) {
           offset -= speed * dt;
-          if (offset <= -halfWidth) offset += halfWidth; // seamless wrap
+          if (offset <= -halfWidth) offset += halfWidth;
           track.style.transform = `translateX(${offset}px)`;
         }
       }
@@ -209,10 +309,12 @@
       rafId = requestAnimationFrame(frame);
     }
 
-    window.addEventListener('load', startMarquee);
+    // Init
+    window.addEventListener('load', () => { buildBlobs(); startMarquee(); });
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
       document.getElementById('track').style.transform = 'translateX(0)';
+      buildBlobs();
       startMarquee();
     });
   </script>
