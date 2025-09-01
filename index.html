@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dylan Astrup — Links & Projects</title>
+  <meta name="description" content="The simple hub for Dylan Astrup’s sites, apps, and social links." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <meta property="og:title" content="Dylan Astrup — Links & Projects" />
+  <meta property="og:description" content="One page to find my projects, apps, and profiles." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/avatar.png" />
+  <meta name="theme-color" content="#477491" />
+  <script>(function(){try{const ls=localStorage.getItem('theme');const systemDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(ls==='dark'||(!ls&&systemDark))document.documentElement.classList.add('dark');}catch(e){}})();</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#477491',secondary:'#D28415',surface:'#D2D2D2'},fontFamily:{hand:["Patrick Hand","system-ui","sans-serif"]},boxShadow:{soft:'0 4px 24px rgba(0,0,0,0.08)'},borderRadius:{'2xl':'1.25rem'}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    .marquee{position:relative;overflow:hidden;height:1.5rem;width:clamp(22ch,50vw,34ch);margin:0 auto;text-align:center;
+      mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%);}
+    .track{display:inline-block;white-space:nowrap;will-change:transform;}
+    .w{display:inline-block;margin-right:0.6ch;}
+  </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 dark:bg-neutral-950 dark:text-gray-100 antialiased">
+  <main class="max-w-5xl mx-auto px-6 py-16">
+    <header class="flex flex-col items-center text-center gap-5">
+      <img id="avatar" class="h-24 w-24 rounded-full ring-2 ring-primary/20 shadow-soft object-cover" src="avatar.png" alt="Avatar" />
+      <div>
+        <h1 class="text-3xl md:text-4xl font-hand tracking-tight">Dylan Astrup</h1>
+        <div class="marquee mt-1 text-gray-600 dark:text-gray-400"><div id="track" class="track"></div></div>
+      </div>
+      <nav class="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+        <a href="mailto:dylan@dylanastrup.com" class="link-underline">Email</a>
+        <a href="https://x.com/dylanastrup" target="_blank" class="link-underline">Twitter/X</a>
+        <a href="https://www.instagram.com/astrup.jpg/" target="_blank" class="link-underline">Instagram</a>
+        <a href="https://www.linkedin.com/in/dylanastrup/" target="_blank" class="link-underline">LinkedIn</a>
+        <a href="https://github.com/dylanastrup" target="_blank" class="link-underline">GitHub</a>
+        <a href="https://buymeacoffee.com/dylanastrup" target="_blank" class="link-underline">Buy Me a Coffee</a>
+      </nav>
+    </header>
+    <section class="mt-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="http://resume.dylanastrup.com/" class="group rounded-2xl border p-5">Resume</a>
+        <a href="https://recipes.dylanastrup.com/" class="group rounded-2xl border p-5">Recipe Book</a>
+        <a href="https://blog.dylanastrup.com/" class="group rounded-2xl border p-5">Blog</a>
+        <a href="http://photos.dylanastrup.com/" class="group rounded-2xl border p-5">Photos</a>
+      </div>
+    </section>
+    <footer class="mt-12 text-center text-xs text-gray-500 dark:text-gray-400">
+      <p>© <span id="year"></span> Dylan Astrup. All rights reserved.</p>
+    </footer>
+  </main>
+<script>
+  document.getElementById('year').textContent=new Date().getFullYear();
+  const TAGLINES=["Engineer","•","Outdoor adventurer","•","Photographer","•","Maker","•","Software tinkerer","•","Outrigger paddler"];
+  let rafId=null;function startMarquee(){const track=document.getElementById('track');const marquee=document.querySelector('.marquee');let paused=false;
+    marquee.addEventListener('mouseenter',()=>paused=true);marquee.addEventListener('mouseleave',()=>paused=false);
+    marquee.addEventListener('touchstart',()=>paused=true,{passive:true});marquee.addEventListener('touchend',()=>paused=false,{passive:true});
+    const sequenceHTML=TAGLINES.map(t=>`<span class="w">${t}</span>`).join(' ');
+    track.innerHTML=`<span class="seq">${sequenceHTML}</span><span class="seq">${sequenceHTML}</span>`;
+    let offset=0;const speed=24;const seqEls=track.querySelectorAll('.seq');const halfWidth=seqEls[0].offsetWidth;const container=marquee.offsetWidth;
+    let widthToCenter=0;const tokenEls=seqEls[0].querySelectorAll('.w');for(let i=0;i<5&&i<tokenEls.length;i++){widthToCenter+=tokenEls[i].offsetWidth;}
+    const centerOfGroup=widthToCenter/2;offset=(container/2)-centerOfGroup;let last=performance.now();
+    function frame(now){rafId=requestAnimationFrame(frame);const dt=(now-last)/1000;last=now;if(!paused){offset-=speed*dt;if(offset<=-halfWidth)offset+=halfWidth;track.style.transform=`translateX(${offset}px)`;}}if(rafId)cancelAnimationFrame(rafId);rafId=requestAnimationFrame(frame);}
+  window.addEventListener('load',startMarquee);window.addEventListener('resize',()=>{if(rafId)cancelAnimationFrame(rafId);document.getElementById('track').style.transform='translateX(0)';startMarquee();});
+</script>
+</body>
+</html>
