@@ -58,6 +58,41 @@
 .transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 .hover\:-translate-y-0\.5:hover { transform: translateY(-0.125rem); } /* This fixes the card lift effect */
 
+/* --- CUSTOM COLORS (Define your primary/secondary colors for text/borders) --- */
+.text-gray-900 { color: #111827; } /* Near-Black for Light Mode */
+.dark .text-gray-100 { color: #f4f5f6; } /* Near-White for Dark Mode */
+.text-gray-600 { color: #4b5563; }
+.dark .text-gray-300 { color: #d1d5db; }
+.text-primary { color: #477491; } /* Your defined primary color */
+
+/* --- END CUSTOM COLORS --- */
+
+/* --- INTERACTIVITY AND DARK MODE VARIANTS --- */
+
+/* Card Border on Hover */
+.hover\:border-primary\/40:hover { border-color: rgba(71, 116, 145, 0.4); } 
+.dark .hover\:border-primary\/50:hover { border-color: rgba(71, 116, 145, 0.5); }
+
+/* Link/Text on Hover */
+.hover\:text-primary:hover { color: #477491; }
+
+/* Backgrounds in Dark Mode */
+.dark\.bg-neutral-950 { background-color: #0a0a0a; } /* Body BG */
+.dark\.bg-neutral-900 { background-color: #171717; } /* Card BG */
+
+/* Text Color within Cards (Fixes link visibility in dark mode) */
+.dark .text-gray-900 { color: #111827; }
+.dark .text-gray-600 { color: #d1d5db; } 
+
+/* Card Lift and Shadow on Hover (Specific CSS to ensure the visual effect works) */
+.hover\:-translate-y-0\.5:hover { transform: translateY(-0.125rem); } 
+
+/* Card Ring (Used for theme toggle focus) */
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px currentColor; }
+.focus\:ring-primary\/40:focus { box-shadow: 0 0 0 2px rgba(71, 116, 145, 0.4); }
+
+/* --- END INTERACTIVITY --- */
+
 /* --- END MANUAL INJECTION --- */
 
 /* Custom CSS Variables and Utility Styles (Your custom styles start here) */
