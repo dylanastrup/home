@@ -6,3 +6,6 @@ tailwind
 
 # Lock Files (npm should handle these, but better to ignore if they cause issues)
 package-lock.json
+
+# macOS files
+.DS_Store
