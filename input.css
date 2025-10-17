@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --- MANUAL INJECTION: MISSING CORE TAILWIND UTILITIES --- */
+
+/* Text Sizing (h1, p) */
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-center { text-align: center; }
+
+/* Spacing and Padding (p, mt, px, py) */
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-10 { margin-top: 2.5rem; }
+.mt-12 { margin-top: 3rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+
+/* Layout (Flex, Grid) */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+
+/* Responsive Grid (sm:grid-cols-2) */
+@media (min-width: 640px) { 
+    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } 
+}
+@media (min-width: 1024px) { 
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
+}
+
+/* --- END MANUAL INJECTION --- */
+
 /* Custom CSS Variables and Utility Styles (Your custom styles start here) */
 :root { --bg1:#477491; --bg2:#5da6c7; --bg3:#3b82f6; --bg4:#22c55e; }
 .dark { --bg1:#0b1a2a; --bg2:#0f172a; --bg3:#0b3a5b; --bg4:#0f766e; }
