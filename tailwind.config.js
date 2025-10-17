@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+// Add the Tailwind base import
+import 'tailwindcss/base'; 
+
 module.exports = {
   // Enables dark mode based on the 'dark' class on the HTML tag
   darkMode: 'class',
   
-  // This tells Tailwind to scan these files for classes to include in the CSS build
+  // This tells Tailwind to scan these files for classes
   content: [
     './index.html',
     './main.js',
