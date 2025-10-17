@@ -46,7 +46,9 @@ function buildSocialNav() {
     SOCIAL.forEach(s => {
         const a = document.createElement('a');
         a.href = s.href; a.rel = 'me noopener'; a.target = s.href.startsWith('http') ? '_blank' : '_self';
-        a.className = 'link-underline hover:text-primary transition inline-flex items-center gap-1.5';
+        // REMOVED: link-underline class
+        // ADDED: no-underline utility class
+        a.className = 'no-underline hover:text-primary transition inline-flex items-center gap-1.5'; 
         a.innerHTML = `${ICONS[s.icon] ?? ''}<span>${s.label}</span>`;
         social.appendChild(a);
     });
@@ -80,7 +82,8 @@ function buildLinkCards() {
         const card = document.createElement('a');
         card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
         card.rel = 'noopener';
-        card.className = 'group relative rounded-2xl border border-gray-200 dark:border-neutral-800 hover:border-primary/40 dark:hover:border-primary/50 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
+        // REMOVED: border border-gray-200 dark:border-neutral-800
+        card.className = 'group relative rounded-2xl bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
 
         const badge = statusBadge(item.status);
         card.innerHTML = `
