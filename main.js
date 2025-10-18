@@ -46,9 +46,7 @@ function buildSocialNav() {
     SOCIAL.forEach(s => {
         const a = document.createElement('a');
         a.href = s.href; a.rel = 'me noopener'; a.target = s.href.startsWith('http') ? '_blank' : '_self';
-        // REMOVED: link-underline class
-        // ADDED: no-underline utility class
-        a.className = 'no-underline hover:text-primary transition inline-flex items-center gap-1.5'; 
+        a.className = 'link-underline hover:text-primary transition inline-flex items-center gap-1.5'; 
         a.innerHTML = `${ICONS[s.icon] ?? ''}<span>${s.label}</span>`;
         social.appendChild(a);
     });
@@ -82,18 +80,17 @@ function buildLinkCards() {
         const card = document.createElement('a');
         card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
         card.rel = 'noopener';
-        // REMOVED: border border-gray-200 dark:border-neutral-800
         card.className = 'group relative rounded-2xl bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
 
         const badge = statusBadge(item.status);
         card.innerHTML = `
             <div class="flex items-start justify-between gap-3">
                 <div class="flex items-center gap-2">${ICONS[item.icon] ?? ''}
-                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">${item.label}</h2>
+                    <h2 class="text-lg font-medium group-hover:underline text-gray-900 dark:text-gray-100">${item.label}</h2>
                 </div>
                 <div class="shrink-0">${badge}</div>
             </div>
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
+            <p class="mt-1 text-sm group-hover:underline text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
         grid.appendChild(card);
     });
 }
