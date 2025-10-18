@@ -21,8 +21,11 @@
 /* Layout and Spacing */
 .mt-1 { margin-top: 0.25rem; }
 .mt-2 { margin-top: 0.5rem; }
+.mt-8 { margin-top: 2rem; }
 .mt-10 { margin-top: 2.5rem; }
 .mt-12 { margin-top: 3rem; }
+.mt-16 { margin-top: 4rem; } /* NEW: mt-16 definition */
+.mb-4 { margin-bottom: 1rem; } /* NEW: mb-4 definition */
 .gap-4 { gap: 1rem; }
 .gap-5 { gap: 1.25rem; }
 .p-5 { padding: 1.25rem; }
@@ -36,6 +39,8 @@
 /* Avatar Size Definitions */
 .h-32 { height: 8rem; }
 .w-32 { width: 8rem; }
+.h-24 { height: 6rem; }
+.w-24 { width: 6rem; }
 
 /* Borders, Radius, and Shadow */
 .rounded-full { border-radius: 9999px; }
@@ -75,7 +80,7 @@ a { text-decoration: none; }
 
 /* Tailwind Dark Mode Utility Definitions (For use in your HTML classes) */
 .dark\.bg-neutral-950 { background-color: #0a0a0a; } 
-.dark\.bg-neutral-900 { background-color: #202020; } /* Set Card BG to slightly lighter #202020 */
+.dark\.bg-neutral-900 { background-color: #202020; } 
 .dark\.text-gray-100 { color: #f4f5f6; } 
 .dark\.text-gray-300 { color: #d1d5db; } 
 .dark\.text-gray-400 { color: #9ca3af; } 
@@ -94,12 +99,12 @@ a { text-decoration: none; }
 /* -------------------------------------------------------- */
 
 /* 1. SUBTLE BORDER COLOR OVERRIDES (FIXES CONTRAST ISSUE) */
-/* Avatar and Card Border Light Mode: Soft, low-opacity black border (Targets border-gray-300) */
+/* Avatar and Card Border Light Mode: Very light gray (12% black opacity) */
 .border-gray-300 { 
     border-color: rgba(0, 0, 0, 0.12) !important; 
 } 
 
-/* Avatar and Card Border Dark Mode: Subtle, low-opacity white border (Targets dark:border-neutral-700) */
+/* 2. Dark Mode Border Override: Subtle, low-opacity white border (Targets dark:border-neutral-700) */
 html.dark .border-neutral-700 { 
     border-color: rgba(255, 255, 255, 0.18) !important; 
 }
@@ -127,7 +132,7 @@ html.dark body {
 
 /* 3. CARD BACKGROUND OVERRIDE (Targets the card's 'bg-white' class when dark mode is active) */
 html.dark .bg-white { 
-    background-color: #202020 !important; /* Forces soft dark card background */
+    background-color: #202020 !important; 
 } 
 
 /* 4. DARK MODE TEXT VISIBILITY FIX (Targets dark text classes and forces them light) */
