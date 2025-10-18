@@ -5,7 +5,7 @@
 const TAGLINES = ['Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler','•'];
 const LINKS = [
     { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text', status: 'live' },
-    { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open', status: 'live-beta' },
+    { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open', status: 'offline' },
     { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss', status: 'live' },
     { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera', status: 'live' }
 ];
