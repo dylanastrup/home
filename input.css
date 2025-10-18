@@ -7,8 +7,10 @@
 /* Text Sizing and Alignment */
 .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
 .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; } 
 .text-xs { font-size: 0.75rem; line-height: 1rem; }
 .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; } 
 .text-center { text-align: center; }
 .font-sans { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
 .font-medium { font-weight: 500; }
@@ -24,11 +26,16 @@
 .gap-4 { gap: 1rem; }
 .gap-5 { gap: 1.25rem; }
 .p-5 { padding: 1.25rem; }
+.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; } 
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
 .items-center { align-items: center; }
 .justify-center { justify-content: center; }
 .shrink-0 { flex-shrink: 0; }
+
+/* Avatar Size Definitions */
+.h-32 { height: 8rem; }
+.w-32 { width: 8rem; }
 
 /* Borders, Radius, and Shadow */
 .rounded-full { border-radius: 9999px; }
@@ -68,7 +75,7 @@ a { text-decoration: none; }
 
 /* Tailwind Dark Mode Utility Definitions (For use in your HTML classes) */
 .dark\.bg-neutral-950 { background-color: #0a0a0a; } 
-.dark\.bg-neutral-900 { background-color: #171717; } 
+.dark\.bg-neutral-900 { background-color: #202020; } /* Set Card BG to slightly lighter #202020 */
 .dark\.text-gray-100 { color: #f4f5f6; } 
 .dark\.text-gray-300 { color: #d1d5db; } 
 .dark\.text-gray-400 { color: #9ca3af; } 
@@ -85,6 +92,20 @@ a { text-decoration: none; }
 /* -------------------------------------------------------- */
 /* --- CRITICAL CSS OVERRIDES (BODY, CARD, AND LINK FIXES) --- */
 /* -------------------------------------------------------- */
+
+/* 1. SUBTLE BORDER COLOR OVERRIDES (FIXES CONTRAST ISSUE) */
+/* Avatar and Card Border Light Mode: Soft, low-opacity black border (Targets border-gray-300) */
+.border-gray-300 { 
+    border-color: rgba(0, 0, 0, 0.12) !important; 
+} 
+
+/* Avatar and Card Border Dark Mode: Subtle, low-opacity white border (Targets dark:border-neutral-700) */
+html.dark .border-neutral-700 { 
+    border-color: rgba(255, 255, 255, 0.18) !important; 
+}
+/* -------------------------------------------------------- */
+
+/* *** OTHER CRITICAL FIXES *** */
 
 /* *** NEW: UNIVERSAL TEXT INHERITANCE FIX *** */
 /* Forces ALL elements to inherit the color set on the body/html, overriding any element defaults */
@@ -106,7 +127,7 @@ html.dark body {
 
 /* 3. CARD BACKGROUND OVERRIDE (Targets the card's 'bg-white' class when dark mode is active) */
 html.dark .bg-white { 
-    background-color: #171717 !important; 
+    background-color: #202020 !important; /* Forces soft dark card background */
 } 
 
 /* 4. DARK MODE TEXT VISIBILITY FIX (Targets dark text classes and forces them light) */
@@ -141,9 +162,9 @@ a:not(.status-badge), a:not(.status-badge):visited {
 .dark { --bg1:#0b1a2a; --bg2:#0f172a; --bg3:#0b3a5b; --bg4:#0f766e; }
 
 .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
-.link-underline:hover{background-size:100% 2px;}
+.link-underline:hover{background-size:100% 2px;} /* THIS IS THE HOVER EFFECT */
 .icon{width:1.1rem;height:1.1rem;margin-right:0.25rem;} /* This has the fixed emoji spacing */
-.icon-card{width:1.4rem;height:1.4rem;margin-right:0.75rem;} /* UPDATED MARGIN for card icon */
+.icon-card{width:1.5rem;height:1.5rem;margin-right:0.5rem;} /* Card icon size/spacing */
 
 /* Animated gradient background */
 .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;

@@ -80,7 +80,7 @@ function buildLinkCards() {
         const card = document.createElement('a');
         card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
         card.rel = 'noopener';
-        card.className = 'group relative rounded-2xl bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
+        card.className = 'group relative rounded-2xl border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
 
         const badge = statusBadge(item.status);
         card.innerHTML = `
@@ -90,7 +90,7 @@ function buildLinkCards() {
                 </div>
                 <div class="shrink-0">${badge}</div>
             </div>
-            <p class="mt-1 text-sm group-hover:underline text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
+            <p class="mt-1 text-base group-hover:underline text-gray-600 dark:text-gray-300">${item.desc ?? ''}</p>`;
         grid.appendChild(card);
     });
 }
