@@ -86,6 +86,12 @@ a { text-decoration: none; }
 /* --- CRITICAL CSS OVERRIDES (BODY, CARD, AND LINK FIXES) --- */
 /* -------------------------------------------------------- */
 
+/* *** NEW: UNIVERSAL TEXT INHERITANCE FIX *** */
+/* Forces ALL elements to inherit the color set on the body/html, overriding any element defaults */
+html.dark *, html.dark *::before, html.dark *::after {
+    color: inherit !important; 
+}
+
 /* 1. LIGHT MODE BODY/DEFAULT TEXT (Fixes background and text base color) */
 body { 
     color: #111827 !important; 
@@ -112,10 +118,21 @@ a:not(.status-badge), a:not(.status-badge):visited {
     color: currentColor !important; 
 }
 
-/* 6. DARK MODE TOGGLE BUTTON TEXT FIX */
-.dark #themeToggle {
-    color: #f4f5f6 !important;
+/* 6. THEME TOGGLE EMOJI SPACING FIX */
+#themeIcon {
+    margin-right: 0.35rem; /* Adds a small gap to the right of the emoji */
 }
+
+/* 7. DARK MODE TOGGLE BUTTON TEXT COLOR FIX */
+.dark #themeToggle {
+    color: #f4f5f6 !important; /* Forces the button text and icon to be light gray */
+}
+
+/* 8. SOCIAL LINK SEPARATION FIX */
+#social {
+    gap: 1.5rem !important; /* Reduced gap to 24px for tighter grouping */
+}
+
 
 /* --- ORIGINAL CUSTOM CSS (Your unique styles) --- */
 
@@ -125,8 +142,8 @@ a:not(.status-badge), a:not(.status-badge):visited {
 
 .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
 .link-underline:hover{background-size:100% 2px;}
-.icon{width:1.1rem;height:1.1rem;}
-.icon-card{width:1.2rem;height:1.2rem;}
+.icon{width:1.1rem;height:1.1rem;margin-right:0.25rem;} /* This has the fixed emoji spacing */
+.icon-card{width:1.4rem;height:1.4rem;margin-right:0.75rem;} /* UPDATED MARGIN for card icon */
 
 /* Animated gradient background */
 .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;
