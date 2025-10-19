@@ -1,7 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// Add the Tailwind base import
-import 'tailwindcss/base'; 
-
 module.exports = {
   // Enables dark mode based on the 'dark' class on the HTML tag
   darkMode: 'class',
