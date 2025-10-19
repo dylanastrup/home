@@ -1,14 +1,29 @@
 // ====================================================================
-// ===== DATA & CONFIGURATION =====
+// ===== DATA & CONFIGURATION (MONOLITHIC BLOCK) =====
 // ====================================================================
 
-const TAGLINES = ['Engineer','•','Outdoor adventurer','•','Photographer','•','Maker','•','Software tinkerer','•','Outrigger paddler','•'];
-const LINKS = [
-    { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact', icon: 'file-text', status: 'live' },
-    { label: 'Recipe Book', href: 'https://recipes.dylanastrup.com/', desc: 'My full‑stack recipe app (React + Flask)', icon: 'book-open', status: 'offline' },
-    { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects & experiments', icon: 'rss', status: 'live' },
-    { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'Photography and galleries', icon: 'camera', status: 'live' }
+const TAGLINES = [
+    'Engineer', '•', 
+    'Outdoor adventurer', '•', 
+    'Photographer', '•', 
+    'Maker', '•', 
+    'Software tinkerer', '•', 
+    'Outrigger paddler', '•'
 ];
+
+const LINKS = [
+    { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact info', icon: 'file-text', status: 'live' },
+    { 
+        label: 'Recipe Book', 
+        href: 'https://recipes.dylanastrup.com/', 
+        desc: 'My full-stack recipe app (React + Flask). Please give it a couple seconds to load as it is hosted on a free tier API instance.', 
+        icon: 'book-open', 
+        status: 'live-beta' 
+    },
+    { label: 'Blog', href: 'https://blog.dylanastrup.com/', desc: 'Notes on projects and my life in general', icon: 'rss', status: 'live' },
+    { label: 'Photos', href: 'https://photos.dylanastrup.com/', desc: 'My photography gallery', icon: 'camera', status: 'live' }
+];
+
 const SOCIAL = [
     { label: 'Email', href: 'mailto:dylan@dylanastrup.com', icon: 'mail' },
     { label: 'Twitter/X', href: 'https://x.com/dylanastrup', icon: 'twitter' },
@@ -80,7 +95,7 @@ function buildLinkCards() {
         const card = document.createElement('a');
         card.href = item.href; card.target = item.href.startsWith('http') ? '_blank' : '_self';
         card.rel = 'noopener';
-        card.className = 'group relative rounded-2xl border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
+        card.className = 'group relative rounded-2xl border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-5 shadow-soft transition hover:-translate-y-0.5 hover:-shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/40';
 
         const badge = statusBadge(item.status);
         card.innerHTML = `
