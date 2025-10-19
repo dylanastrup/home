@@ -29,16 +29,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. NEW: Download the standalone Tailwind binary, rename it, and make it executable
+      # 2. Download the standalone Tailwind binary, rename it, and make it executable
       - name: Setup Tailwind CSS
         run: |
           curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.3/tailwindcss-linux-x64
           mv tailwindcss-linux-x64 tailwind
           chmod +x ./tailwind
         
-      # 3. Run the build command using the downloaded binary
+      # 3. UPDATED: Run the build command, forcing the content paths
       - name: Build Tailwind CSS
-        run: ./tailwind -c tailwind.config.js -i ./input.css -o ./style.css --minify
+        run: ./tailwind --content './index.html,./main.js' -i ./input.css -o ./style.css --minify
 
       # 4. Configures the GitHub Pages deployment
       - name: Setup Pages
