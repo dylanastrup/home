@@ -2,23 +2,141 @@
 @tailwind components;
 @tailwind utilities;
 
-/* All of the manually defined utility classes have been removed from here.
-  Tailwind will now generate them automatically based on your tailwind.config.js,
-  using the `content` and `safelist` properties.
-*/
+/* --- MANUAL INJECTION: CORE LAYOUT AND APPEARANCE UTILITIES --- */
+
+/* Text Sizing and Alignment */
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; } 
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-base { font-size: 1rem; line-height: 1.5rem; } 
+.text-center { text-align: center; }
+.font-sans { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.tracking-tight { letter-spacing: -0.025em; }
+.antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Layout and Spacing */
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mt-10 { margin-top: 2.5rem; }
+.mt-12 { margin-top: 3rem; }
+.mt-16 { margin-top: 4rem; }
+.mb-4 { margin-bottom: 1rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.p-5 { padding: 1.25rem; }
+.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; } 
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.shrink-0 { flex-shrink: 0; }
+
+/* Avatar Size Definitions */
+.h-32 { height: 8rem; }
+.w-32 { width: 8rem; }
+.h-24 { height: 6rem; }
+.w-24 { width: 6rem; }
+
+/* Borders, Radius, and Shadow */
+.rounded-full { border-radius: 9999px; }
+.rounded-2xl { border-radius: 1.25rem; }
+.border { border-width: 1px; border-style: solid; }
+.shadow-soft { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); }
+.ring-2 { box-shadow: 0 0 0 2px currentColor; } 
+
+/* Transitions & Transforms */
+.transition { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.hover\:-translate-y-0\.5:hover { transform: translateY(-0.125rem); } 
+
+/* Responsive Grid */
+@media (min-width: 640px) { 
+    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } 
+}
+@media (min-width: 1024px) { 
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
+}
+
+/* --- FINAL LINK UNDERLINING FIX --- */
+.no-underline { text-decoration: none; } 
+a { text-decoration: none; } 
+
+/* --- MANUAL INJECTION: COLOR AND DARK MODE UTILITIES --- */
+
+/* Color Scheme Fixes (REQUIRED FOR DARK MODE) */
+.\[color-scheme\:light\] { color-scheme: light; }
+.dark\[\:color-scheme\:dark\] { color-scheme: dark; }
+
+/* Light Mode/Default Colors */
+.bg-white { background-color: #fff; }
+.text-gray-900 { color: #111827; }
+.text-gray-600 { color: #4b5563; }
+.text-primary { color: #477491; }
+
+/* Tailwind Dark Mode Utility Definitions (For use in your HTML classes) */
+.dark\.bg-neutral-950 { background-color: #0a0a0a; } 
+.dark\.bg-neutral-900 { background-color: #202020; } 
+.dark\.text-gray-100 { color: #f4f5f6; } 
+.dark\.text-gray-300 { color: #d1d5db; } 
+.dark\.text-gray-400 { color: #9ca3af; } 
+.dark\.border-neutral-800 { border-color: #262626; } 
+
+/* Dark Mode Interactivity */
+.dark .hover\:border-primary\/50:hover { border-color: rgba(71, 116, 145, 0.5); }
+
+/* --- VISITED LINK COLOR FIX (FINAL FIX) --- */
+.link-underline:visited { 
+    color: currentColor !important; 
+} 
+
+/* --- CRITICAL CSS OVERRIDES (BODY, CARD, AND LINK FIXES) --- */
+.border-gray-300 { 
+    border-color: rgba(0, 0, 0, 0.12) !important; 
+} 
+html.dark .border-neutral-700 { 
+    border-color: rgba(255, 255, 255, 0.18) !important; 
+}
+html.dark *, html.dark *::before, html.dark *::after {
+    color: inherit !important; 
+}
+body { 
+    color: #111827 !important; 
+    background-color: #fff !important; 
+}
+html.dark body { 
+    color: #f4f5f6 !important; 
+    background-color: #0a0a0a !important; 
+}
+html.dark .bg-white { 
+    background-color: #202020 !important; 
+} 
+html.dark .text-gray-900 { color: #f4f5f6 !important; } 
+html.dark .text-gray-600 { color: #d1d5db !important; }
+a:not(.status-badge), a:not(.status-badge):visited {
+    color: currentColor !important; 
+}
+#themeIcon {
+    margin-right: 0.35rem;
+}
+.dark #themeToggle {
+    color: #f4f5f6 !important;
+}
+#social {
+    gap: 1.5rem !important;
+}
 
 /* --- ORIGINAL CUSTOM CSS (Your unique styles) --- */
-
-/* Custom CSS Variables and Utility Styles */
 :root { --bg1:#477491; --bg2:#5da6c7; --bg3:#3b82f6; --bg4:#22c55e; }
 .dark { --bg1:#0b1a2a; --bg2:#0f172a; --bg3:#0b3a5b; --bg4:#0f766e; }
-
 .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
 .link-underline:hover{background-size:100% 2px;}
 .icon{width:1.1rem;height:1.1rem;margin-right:0.25rem;}
 .icon-card{width:1.5rem;height:1.5rem;margin-right:0.5rem;}
-
-/* Animated gradient background */
 .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;
     background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
     background-size: 300% 300%; opacity: .22; animation: bgMove 22s ease-in-out infinite; }
@@ -27,8 +145,6 @@
 .dark .bg-anim { opacity:.28; }
 .dark .bg-anim::after { background: radial-gradient(1200px 800px at 70% 20%, rgba(0,0,0,.22) 0%, rgba(0,0,0,.36) 70%, rgba(0,0,0,.44) 100%); }
 @keyframes bgMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
-/* Single flowing wave band (subtle) */
 .bg-wave { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
 .bg-wave .band {
     position: absolute; left: -20%; width: 140%; height: 24vh; top: 58vh;
@@ -45,8 +161,6 @@
 @keyframes waveDrift { 0% { transform: translateX(0) translateY(0) skewX(4deg); }
                        50% { transform: translateX(-6%) translateY(1vh) skewX(-4deg); }
                        100% { transform: translateX(0) translateY(0) skewX(4deg); } }
-
-/* Organic blobs (hidden & flowy) */
 .bg-blobs { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .bg-blobs .blob{ position:absolute; left:var(--x); top:var(--y); width:var(--size); height:var(--size);
     transform:translate(-50%,-50%) rotate(var(--rot)); filter:blur(28px);
@@ -54,11 +168,9 @@
     clip-path:polygon(var(--poly)); opacity:var(--op,.22); mix-blend-mode:soft-light;
     animation: drift var(--dur) cubic-bezier(.42,0,.58,1) infinite, spin calc(var(--spin)) linear infinite; }
 .dark .bg-blobs .blob { opacity: var(--op, .28); filter: blur(32px); mix-blend-mode: screen; }
-
 .bg-blobs::before, .bg-blobs::after { content:""; position:absolute; left:-15%; width:130%; height:28vh; pointer-events:none; filter: blur(16px); opacity:.16; }
 .bg-blobs::before { top:-8vh; background: linear-gradient(180deg, hsla(205,70%,65%,.28), transparent 70%); border-bottom-left-radius:45% 60%; border-bottom-right-radius:55% 60%; animation: waveX 22s ease-in-out infinite; }
 .bg-blobs::after  { bottom:-10vh; background: linear-gradient(0deg, hsla(160,70%,55%,.28), transparent 70%); border-top-left-radius:60% 55%; border-top-right-radius:40% 55%; animation: waveX 28s ease-in-out infinite reverse; }
-
 @keyframes drift{
     0%   { transform: translate(-50%,-50%) rotate(var(--rot)) translate(0,0); }
     25%  { transform: translate(-50%,-50%) rotate(calc(var(--rot) + 2deg)) translate(calc(var(--dx)*0.45), calc(var(--dy)*0.25)); }
@@ -68,24 +180,17 @@
 }
 @keyframes spin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
 @keyframes waveX { 0% { transform: translateX(0); } 50% { transform: translateX(-6%); } 100% { transform: translateX(0); } }
-
 @media (prefers-reduced-motion: reduce) { .bg-anim, .bg-wave .band, .bg-blobs .blob, .bg-blobs::before, .bg-blobs::after { animation: none !important; } }
-
-/* Tagline marquee */
 .marquee { position: relative; overflow: hidden; height: 1.5rem; width: clamp(22ch, 50vw, 34ch); margin: 0 auto; text-align: center;
     mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%); }
 .track { display: inline-block; white-space: nowrap; will-change: transform; }
 .w { display: inline-block; margin-right: 0.6ch; }
-
-/* Theme toggle — stronger contrast */
 #themeToggle { border-width: 1.5px; border-color: rgba(0,0,0,.22); background: rgba(255,255,255,.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 0 0 1px rgba(0,0,0,.02), 0 4px 12px rgba(0,0,0,.06); }
 #themeToggle:hover { border-color: rgba(71,116,145,.6); color: #477491; }
 #themeToggle:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(71,116,145,.35); }
 .dark #themeToggle { border-color: rgba(255,255,255,.28); background: rgba(12,12,12,.45); box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 0 0 1px rgba(255,255,255,.03), 0 6px 14px rgba(0,0,0,.35); }
 .dark #themeToggle:hover { border-color: rgba(71,116,145,.65); color: #8db6cc; }
-
-/* Status badges */
 .status-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.15rem .5rem;border-radius:9999px;font-size:.72rem;line-height:1;border:1px solid currentColor;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .dark .status-badge{background:rgba(12,12,12,.45)}
 .status-badge .dot{width:.5rem;height:.5rem;border-radius:9999px}
