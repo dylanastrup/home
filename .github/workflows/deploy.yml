@@ -29,28 +29,40 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Download the standalone Tailwind binary, rename it, and make it executable
+      # 2. Download the standalone Tailwind binary
       - name: Setup Tailwind CSS
         run: |
           curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.3/tailwindcss-linux-x64
           mv tailwindcss-linux-x64 tailwind
           chmod +x ./tailwind
-        
-      # 3. UPDATED: Run the build command, forcing the content paths
+      
+      # 3. NEW DEBUG STEP: Inspect the file system
+      - name: Debug File Structure
+        run: |
+          echo "--- Current Directory ---"
+          pwd
+          echo "--- File Listing ---"
+          ls -laR
+          echo "--- tailwind.config.js content ---"
+          cat tailwind.config.js
+          echo "--- input.css content ---"
+          cat input.css
+
+      # 4. Run the build command
       - name: Build Tailwind CSS
         run: ./tailwind --content './index.html,./main.js' -i ./input.css -o ./style.css --minify
 
-      # 4. Configures the GitHub Pages deployment
+      # 5. Configures the GitHub Pages deployment
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
-      # 5. Gathers the files to be deployed (your entire root directory)
+      # 6. Gathers the files to be deployed
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
           
-      # 6. Deploys the artifact to GitHub Pages
+      # 7. Deploys the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
