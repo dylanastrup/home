@@ -12,7 +12,7 @@ const TAGLINES = [
 ];
 
 const LINKS = [
-    { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact info', icon: 'file-text', status: 'live' },
+    { label: 'Resume', href: 'https://resume.dylanastrup.com/', desc: 'Experience, projects, and contact info test', icon: 'file-text', status: 'live' },
     { 
         label: 'Recipe Book', 
         href: 'https://recipes.dylanastrup.com/', 
