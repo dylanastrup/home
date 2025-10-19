@@ -25,16 +25,18 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # 1. Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # 1. Checks out your repository so the job can access it
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. This is a critical step for your setup. 
-      #    The standalone tailwind binary needs execute permissions to run.
-      - name: Make Tailwind executable
-        run: chmod +x ./tailwind
+      # 2. NEW: Download the standalone Tailwind binary, rename it, and make it executable
+      - name: Setup Tailwind CSS
+        run: |
+          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.3/tailwindcss-linux-x64
+          mv tailwindcss-linux-x64 tailwind
+          chmod +x ./tailwind
         
-      # 3. Run the exact build command you were using locally
+      # 3. Run the build command using the downloaded binary
       - name: Build Tailwind CSS
         run: ./tailwind -c tailwind.config.js -i ./input.css -o ./style.css --minify
 
@@ -46,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.' # Use '.' to upload everything from the root directory
+          path: '.'
           
       # 6. Deploys the artifact to GitHub Pages
       - name: Deploy to GitHub Pages
