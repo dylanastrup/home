@@ -2,163 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- MANUAL INJECTION: CORE LAYOUT AND APPEARANCE UTILITIES --- */
-
-/* Text Sizing and Alignment */
-.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-.text-5xl { font-size: 3rem; line-height: 1; } 
-.text-xs { font-size: 0.75rem; line-height: 1rem; }
-.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-.text-base { font-size: 1rem; line-height: 1.5rem; } 
-.text-center { text-align: center; }
-.font-sans { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
-.font-medium { font-weight: 500; }
-.font-semibold { font-weight: 600; }
-.tracking-tight { letter-spacing: -0.025em; }
-.antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-/* Layout and Spacing */
-.mt-1 { margin-top: 0.25rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-8 { margin-top: 2rem; }
-.mt-10 { margin-top: 2.5rem; }
-.mt-12 { margin-top: 3rem; }
-.mt-16 { margin-top: 4rem; } /* NEW: mt-16 definition */
-.mb-4 { margin-bottom: 1rem; } /* NEW: mb-4 definition */
-.gap-4 { gap: 1rem; }
-.gap-5 { gap: 1.25rem; }
-.p-5 { padding: 1.25rem; }
-.px-10 { padding-left: 2.5rem; padding-right: 2.5rem; } 
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.shrink-0 { flex-shrink: 0; }
-
-/* Avatar Size Definitions */
-.h-32 { height: 8rem; }
-.w-32 { width: 8rem; }
-.h-24 { height: 6rem; }
-.w-24 { width: 6rem; }
-
-/* Borders, Radius, and Shadow */
-.rounded-full { border-radius: 9999px; }
-.rounded-2xl { border-radius: 1.25rem; }
-.border { border-width: 1px; border-style: solid; }
-.shadow-soft { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); }
-.ring-2 { box-shadow: 0 0 0 2px currentColor; } 
-
-/* Transitions & Transforms */
-.transition { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-.hover\:-translate-y-0\.5:hover { transform: translateY(-0.125rem); } 
-
-/* Responsive Grid */
-@media (min-width: 640px) { 
-    .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } 
-}
-@media (min-width: 1024px) { 
-    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
-}
-
-/* --- FINAL LINK UNDERLINING FIX --- */
-.no-underline { text-decoration: none; } 
-a { text-decoration: none; } 
-
-/* --- MANUAL INJECTION: COLOR AND DARK MODE UTILITIES --- */
-
-/* Color Scheme Fixes (REQUIRED FOR DARK MODE) */
-.\[color-scheme\:light\] { color-scheme: light; }
-.dark\[\:color-scheme\:dark\] { color-scheme: dark; }
-
-/* Light Mode/Default Colors */
-.bg-white { background-color: #fff; }
-.text-gray-900 { color: #111827; }
-.text-gray-600 { color: #4b5563; }
-.text-primary { color: #477491; }
-
-/* Tailwind Dark Mode Utility Definitions (For use in your HTML classes) */
-.dark\.bg-neutral-950 { background-color: #0a0a0a; } 
-.dark\.bg-neutral-900 { background-color: #202020; } 
-.dark\.text-gray-100 { color: #f4f5f6; } 
-.dark\.text-gray-300 { color: #d1d5db; } 
-.dark\.text-gray-400 { color: #9ca3af; } 
-.dark\.border-neutral-800 { border-color: #262626; } 
-
-/* Dark Mode Interactivity */
-.dark .hover\:border-primary\/50:hover { border-color: rgba(71, 116, 145, 0.5); }
-
-/* --- VISITED LINK COLOR FIX (FINAL FIX) --- */
-.link-underline:visited { 
-    color: currentColor !important; 
-} 
-
-/* -------------------------------------------------------- */
-/* --- CRITICAL CSS OVERRIDES (BODY, CARD, AND LINK FIXES) --- */
-/* -------------------------------------------------------- */
-
-/* 1. SUBTLE BORDER COLOR OVERRIDES (FIXES CONTRAST ISSUE) */
-/* Avatar and Card Border Light Mode: Very light gray (12% black opacity) */
-.border-gray-300 { 
-    border-color: rgba(0, 0, 0, 0.12) !important; 
-} 
-
-/* 2. Dark Mode Border Override: Subtle, low-opacity white border (Targets dark:border-neutral-700) */
-html.dark .border-neutral-700 { 
-    border-color: rgba(255, 255, 255, 0.18) !important; 
-}
-/* -------------------------------------------------------- */
-
-/* *** OTHER CRITICAL FIXES *** */
-
-/* *** NEW: UNIVERSAL TEXT INHERITANCE FIX *** */
-/* Forces ALL elements to inherit the color set on the body/html, overriding any element defaults */
-html.dark *, html.dark *::before, html.dark *::after {
-    color: inherit !important; 
-}
-
-/* 1. LIGHT MODE BODY/DEFAULT TEXT (Fixes background and text base color) */
-body { 
-    color: #111827 !important; 
-    background-color: #fff !important; 
-}
-
-/* 2. DARK MODE BODY/DEFAULT TEXT (Fixes background and text base color) */
-html.dark body { 
-    color: #f4f5f6 !important; 
-    background-color: #0a0a0a !important; 
-}
-
-/* 3. CARD BACKGROUND OVERRIDE (Targets the card's 'bg-white' class when dark mode is active) */
-html.dark .bg-white { 
-    background-color: #202020 !important; 
-} 
-
-/* 4. DARK MODE TEXT VISIBILITY FIX (Targets dark text classes and forces them light) */
-html.dark .text-gray-900 { color: #f4f5f6 !important; } 
-html.dark .text-gray-600 { color: #d1d5db !important; }
-
-/* 5. LINK COLOR OVERRIDE (Fixes default browser blue/purple links) */
-a:not(.status-badge), a:not(.status-badge):visited {
-    color: currentColor !important; 
-}
-
-/* 6. THEME TOGGLE EMOJI SPACING FIX */
-#themeIcon {
-    margin-right: 0.35rem; /* Adds a small gap to the right of the emoji */
-}
-
-/* 7. DARK MODE TOGGLE BUTTON TEXT COLOR FIX */
-.dark #themeToggle {
-    color: #f4f5f6 !important; /* Forces the button text and icon to be light gray */
-}
-
-/* 8. SOCIAL LINK SEPARATION FIX */
-#social {
-    gap: 1.5rem !important; /* Reduced gap to 24px for tighter grouping */
-}
-
+/* All of the manually defined utility classes have been removed from here.
+  Tailwind will now generate them automatically based on your tailwind.config.js,
+  using the `content` and `safelist` properties.
+*/
 
 /* --- ORIGINAL CUSTOM CSS (Your unique styles) --- */
 
@@ -167,9 +14,9 @@ a:not(.status-badge), a:not(.status-badge):visited {
 .dark { --bg1:#0b1a2a; --bg2:#0f172a; --bg3:#0b3a5b; --bg4:#0f766e; }
 
 .link-underline{background-image:linear-gradient(currentColor,currentColor);background-size:0% 2px;background-repeat:no-repeat;background-position:0% 100%;transition:background-size .2s ease;}
-.link-underline:hover{background-size:100% 2px;} /* THIS IS THE HOVER EFFECT */
-.icon{width:1.1rem;height:1.1rem;margin-right:0.25rem;} /* This has the fixed emoji spacing */
-.icon-card{width:1.5rem;height:1.5rem;margin-right:0.5rem;} /* Card icon size/spacing */
+.link-underline:hover{background-size:100% 2px;}
+.icon{width:1.1rem;height:1.1rem;margin-right:0.25rem;}
+.icon-card{width:1.5rem;height:1.5rem;margin-right:0.5rem;}
 
 /* Animated gradient background */
 .bg-anim { position: fixed; inset: 0; z-index: -3; pointer-events: none;
