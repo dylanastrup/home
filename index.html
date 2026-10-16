@@ -1,92 +1,187 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dylan Astrup — Engineer, Photographer & Builder</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Dylan Astrup — Engineer, Photographer & Builder" />
+  <meta name="description" content="Mechanical test & evaluation engineer, outdoor and surf photographer, and full-stack software tinkerer based in Ventura, California." />
+  <meta name="author" content="Dylan Astrup" />
+  <meta name="keywords" content="Dylan Astrup, Mechanical Engineer, NAVSEA, Ventura CA, Surf Photographer, Outdoor Photography, Portfolio, Software Tinkerer" />
+  <link rel="canonical" href="https://dylanastrup.com/" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="theme-color" content="#0f172a" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-20ZYVE461L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dylan Astrup" />
+  <meta property="og:url" content="https://dylanastrup.com/" />
+  <meta property="og:title" content="Dylan Astrup — Engineer, Photographer & Builder" />
+  <meta property="og:description" content="Mechanical test & evaluation engineer, outdoor and surf photographer, and software tinkerer based in Ventura, CA." />
+  <meta property="og:image" content="https://dylanastrup.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="675" />
+  <meta property="og:image:alt" content="Dylan Astrup Portfolio Banner" />
 
-        gtag('config', 'G-20ZYVE461L');
-    </script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dylan Astrup</title>
-    <meta name="description" content="If you're Googleing Dylan Astrup, this is the website you want to click on. He's an engineer, photographer, and all around cool guy, come learn more about him." />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <meta property="og:title" content="Dylan Astrup" />
-    <meta property="og:description" content="If you're Googleing Dylan Astrup, this is the website you want to click on. He's an engineer, photographer, and all around cool guy, come learn more about him." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://dylanastrup.com/avatar.png" />
-    <meta name="theme-color" content="#0f172a" />
-    <link rel="canonical" href="https://dylanastrup.com/" />
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@dylanastrup" />
+  <meta name="twitter:creator" content="@dylanastrup" />
+  <meta name="twitter:url" content="https://dylanastrup.com/" />
+  <meta name="twitter:title" content="Dylan Astrup — Engineer, Photographer & Builder" />
+  <meta name="twitter:description" content="Mechanical test & evaluation engineer, outdoor and surf photographer, and software tinkerer based in Ventura, CA." />
+  <meta name="twitter:image" content="https://dylanastrup.com/og-image.jpg" />
 
-    <script>
-        (function(){
-            try {
-                const ls = localStorage.getItem('theme');
-                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (ls === 'dark' || (!ls && systemDark)) document.documentElement.classList.add('dark');
-            } catch(e) {}
-        })();
-    </script>
+  <!-- Anti-theme-flash script -->
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && systemDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
-    <link href="style.css" rel="stylesheet">
+  <!-- Google Analytics -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-20ZYVE461L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-20ZYVE461L');
+  </script>
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Typography: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "Person",
         "@id": "https://dylanastrup.com/#person",
         "name": "Dylan Astrup",
         "url": "https://dylanastrup.com/",
         "image": "https://dylanastrup.com/avatar.png",
+        "jobTitle": "Mechanical Engineer & Systems Test Specialist",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Naval Surface Warfare Center (NAVSEA)"
+        },
+        "description": "Mechanical engineer specializing in unmanned surface vessel test & evaluation and shipboard networks, alongside outdoor and surf photography.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ventura",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        },
         "email": "mailto:dylan@dylanastrup.com",
+        "knowsAbout": [
+          "Mechanical Engineering",
+          "Systems Test and Evaluation",
+          "Unmanned Surface Systems",
+          "Surf Photography",
+          "Outdoor & Adventure Photography",
+          "Full-Stack Web Development",
+          "React",
+          "Python"
+        ],
         "sameAs": [
-            "https://x.com/dylanastrup",
-            "https://www.instagram.com/astrup.jpg/",
-            "https://www.linkedin.com/in/dylanastrup/",
-            "https://github.com/dylanastrup",
-            "https://resume.dylanastrup.com/",
-            "https://recipes.dylanastrup.com/",
-            "https://blog.dylanastrup.com/",
-            "https://photos.dylanastrup.com/"
+          "https://x.com/dylanastrup",
+          "https://www.instagram.com/astrup.jpg/",
+          "https://www.linkedin.com/in/dylanastrup/",
+          "https://github.com/dylanastrup",
+          "https://resume.dylanastrup.com/",
+          "https://recipes.dylanastrup.com/",
+          "https://blog.dylanastrup.com/",
+          "https://photos.dylanastrup.com/",
+          "https://buymeacoffee.com/dylanastrup"
         ]
-    }
-    </script>
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://dylanastrup.com/#webpage",
+        "url": "https://dylanastrup.com/",
+        "name": "Dylan Astrup — Personal Hub & Portfolio",
+        "mainEntity": {
+          "@id": "https://dylanastrup.com/#person"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="font-sans min-h-screen bg-white text-gray-900 dark:bg-neutral-950 dark:text-gray-100 antialiased [color-scheme:light] dark:[color-scheme:dark]">
-    <div class="bg-anim"></div>
-    <div class="bg-wave"><div class="band"></div></div>
-    <div id="bg-blobs" class="bg-blobs"></div>
-    <main class="max-w-5xl mx-auto px-10 py-16 relative">
-        <header class="flex flex-col items-center text-center gap-5">
-            <img class="mt-16 mb-4 h-32 w-32 rounded-full border border-gray-300 dark:border-neutral-700 shadow-soft object-cover" src="avatar.png" alt="Avatar" width="96" height="96" />
-            <div>
-                <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Dylan Astrup</h1>
-                <div class="marquee mt-1 text-gray-600 dark:text-gray-400"><div id="track" class="track"></div></div>
-                <div id="localtime" class="mt-2 text-sm text-gray-700 dark:text-gray-300"></div>
-            </div>
-            <nav id="social" class="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-700 dark:text-gray-300"></nav>
-            <button id="themeToggle" aria-label="Toggle light and dark themes" class="mt-2 inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-neutral-700 px-3 py-1 text-sm hover:border-primary/50 hover:text-primary dark:hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"><span id="themeIcon">🌞</span><span id="themeLabel">Light</span></button>
-        </header>
+<body class="font-sans antialiased">
+  <!-- Background Visual Layers -->
+  <div class="bg-anim" aria-hidden="true"></div>
+  <div class="bg-wave" aria-hidden="true"><div class="band"></div></div>
+  <div id="bg-blobs" class="bg-blobs" aria-hidden="true"></div>
 
-        <section class="mt-10">
-            <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-        </section>
+  <!-- Main Content Container -->
+  <main class="max-w-5xl mx-auto px-6 sm:px-10 py-12 md:py-16 relative">
+    <!-- Header / Bio -->
+    <header class="flex flex-col items-center text-center gap-5">
+      <div class="relative group mt-6 md:mt-10 mb-2">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-emerald-400 opacity-40 blur-md group-hover:opacity-75 transition duration-500"></div>
+        <img
+          class="relative h-28 w-28 md:h-32 md:w-32 rounded-full border-2 border-white dark:border-neutral-800 shadow-soft object-cover"
+          src="/avatar.png"
+          alt="Dylan Astrup"
+          width="128"
+          height="128"
+          loading="eager"
+        />
+      </div>
 
-        <footer class="mt-12 text-center text-xs text-gray-500 dark:text-gray-400">
-            <p>© <span id="year"></span> Dylan Astrup. All rights reserved.</p>
-        </footer>
-    </main>
+      <div>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+          Dylan Astrup
+        </h1>
+        <div class="marquee mt-1.5 text-gray-600 dark:text-gray-400 font-medium text-sm">
+          <div id="track" class="track"></div>
+        </div>
+        <div id="localtime" class="mt-2 text-xs md:text-sm text-gray-500 dark:text-gray-400 font-mono tracking-wide"></div>
+      </div>
 
-    <script src="main.js" defer></script>
+      <!-- Social Channels -->
+      <nav id="social" class="flex flex-wrap items-center justify-center gap-2 max-w-lg" aria-label="Social links"></nav>
+
+      <!-- Theme Switcher -->
+      <button
+        id="themeToggle"
+        type="button"
+        aria-label="Toggle light and dark themes"
+        class="mt-1 inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md px-3.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 shadow-xs hover:border-primary/50 hover:text-primary dark:hover:text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 cursor-pointer"
+      >
+        <span id="themeIcon">🌞</span>
+        <span id="themeLabel">Light</span>
+      </button>
+    </header>
+
+    <!-- Portfolio & Projects Grid -->
+    <section class="mt-12 md:mt-14" aria-label="Portfolio and Project Directory">
+      <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-2 gap-5"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-xs text-gray-500 dark:text-gray-400 space-y-1">
+      <p>© <span id="year"></span> Dylan Astrup. All rights reserved.</p>
+      <p class="text-[11px] text-gray-400 dark:text-gray-500">Ventura, California • Built with modern performance & precision</p>
+    </footer>
+  </main>
+
+  <!-- Vite Entrypoint -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

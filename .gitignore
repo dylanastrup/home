@@ -1,11 +1,22 @@
-# Dependency Directories
-/node_modules
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
 
-# Executable Binaries (Unnecessary to commit)
-tailwind
+# Production build output
+dist/
+build/
 
-# Lock Files (npm should handle these, but better to ignore if they cause issues)
-package-lock.json
+# Firebase cache
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
 
-# macOS files
+# Environment and local settings
+.env
+.env.local
+.env.*.local
+
+# Operating System files
 .DS_Store
+Thumbs.db

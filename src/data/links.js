@@ -1,0 +1,36 @@
+export const LINKS = [
+  {
+    label: 'Resume',
+    href: 'https://resume.dylanastrup.com/',
+    desc: 'Systems test & evaluation experience, hardware projects, and engineering background.',
+    icon: 'file-text',
+    status: 'live',
+    tags: ['Engineering', 'Test & Eval', 'Portfolio'],
+    repo: 'https://github.com/dylanastrup/resume',
+  },
+  {
+    label: 'Recipe Book',
+    href: 'https://recipes.dylanastrup.com/',
+    desc: 'Full-stack recipe scaling & management app with auto-conversion and ingredient scaling.',
+    icon: 'book-open',
+    status: 'live-beta',
+    tags: ['React', 'Flask', 'PostgreSQL'],
+    repo: 'https://github.com/dylanastrup/RecipeBookSite',
+  },
+  {
+    label: 'Blog',
+    href: 'https://blog.dylanastrup.com/',
+    desc: 'Engineering notes, technical experiments, outdoor logs, and personal thoughts.',
+    icon: 'rss',
+    status: 'live',
+    tags: ['Writing', 'Engineering', 'Logs'],
+  },
+  {
+    label: 'Photos',
+    href: 'https://photos.dylanastrup.com/',
+    desc: 'Outdoor, surf, ocean, and lifestyle photography gallery from the California coast and beyond.',
+    icon: 'camera',
+    status: 'live',
+    tags: ['Photography', 'Surf', 'Lifestyle'],
+  },
+];
